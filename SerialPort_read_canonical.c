@@ -60,8 +60,8 @@ void main(void)
 	SerialPortSettings.c_cflag |= CREAD | CLOCAL; // Enable receiver, Ignore Modem Control lines
 	
 	SerialPortSettings.c_iflag &= ~(IXON | IXOFF | IXANY);          // Disable XON/XOFF flow control both i/p and o/p
-
-	SerialPortSettings.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);  // Non Cannonical mode, Disable echo, Disable signal  
+    SerialPortSettings.c_lflag |= ICANON;   // Active le mode canonique
+    SerialPortSettings.c_lflag &= ~(ECHO | ECHOE | ISIG);  // Non Cannonical mode, Disable echo, Disable signal  
 
 	SerialPortSettings.c_oflag &= ~OPOST;	// No Output Processing
 
